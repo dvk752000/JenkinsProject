@@ -34,7 +34,3 @@ gradleEnterprise {
         termsOfServiceAgree = "yes"
     }
 }
-gradleEnterprise {
-    server = "https://gradle-enterprise.mycompany.com"
-    allowUntrustedServer = true
-}
