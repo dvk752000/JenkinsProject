@@ -24,7 +24,9 @@ dependencies {
 	testImplementation 'org.springframework.security:spring-security-test'
 }
 
-
+tasks.named('test') {
+	useJUnitPlatform()
+}
 
 gradleEnterprise {
     buildScan {
@@ -37,3 +39,8 @@ compileJava {
   sourceCompatibility = '1.8'
   targetCompatibility = '1.8'
 }
+compileTestJava {
+  sourceCompatibility = '1.8'
+  targetCompatibility = '1.8'
+}
+
