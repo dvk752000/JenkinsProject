@@ -34,3 +34,7 @@ gradleEnterprise {
         termsOfServiceAgree = "yes"
     }
 }
+
+compileJava {
+  sourceCompatibility = '1.8'
+}
