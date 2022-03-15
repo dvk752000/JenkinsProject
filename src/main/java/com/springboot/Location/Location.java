@@ -1,4 +1,4 @@
-package com.javaSpringBoot.BasicRestApplication.Location;
+package com.springboot.Location;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

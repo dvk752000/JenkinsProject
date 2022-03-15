@@ -1,4 +1,4 @@
-package com.javaSpringBoot.BasicRestApplication.User;
+package com.springboot.User;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,7 +7,8 @@ import java.util.List;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
 
-import com.javaSpringBoot.BasicRestApplication.Location.Location;
+import com.springboot.Location.Location;
+
 
 @ComponentScan("com.javaSpringBoot.BasicRestApplication.SpringBootStarter")
 @Service

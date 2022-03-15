@@ -1,4 +1,4 @@
-package com.javaSpringBoot.BasicRestApplication.Location;
+package com.springboot.Location;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

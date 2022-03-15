@@ -1,7 +1,6 @@
-package com.javaSpringBoot.BasicRestApplication.User;
+package com.springboot.User;
 
-import com.javaSpringBoot.BasicRestApplication.Location.Location;
-
+import com.springboot.Location.Location;
 
 public class User {
     private String id;

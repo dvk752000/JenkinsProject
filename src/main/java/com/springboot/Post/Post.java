@@ -1,6 +1,6 @@
-package com.javaSpringBoot.BasicRestApplication.Post;
+package com.springboot.Post;
 
-import com.javaSpringBoot.BasicRestApplication.User.User;
+import com.springboot.User.User;
 
 public class Post {
 	   private String id;

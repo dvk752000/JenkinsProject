@@ -1,4 +1,4 @@
-package com.javaSpringBoot.BasicRestApplication.Post;
+package com.springboot.Post;
 
 import java.util.List;
 

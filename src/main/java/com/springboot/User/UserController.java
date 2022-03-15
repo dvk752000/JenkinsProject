@@ -1,4 +1,4 @@
-package com.javaSpringBoot.BasicRestApplication.User;
+package com.springboot.User;
 
 import java.util.List;
 

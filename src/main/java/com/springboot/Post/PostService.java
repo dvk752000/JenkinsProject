@@ -1,4 +1,4 @@
-package com.javaSpringBoot.BasicRestApplication.Post;
+package com.springboot.Post;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,8 +6,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.javaSpringBoot.BasicRestApplication.Location.Location;
-import com.javaSpringBoot.BasicRestApplication.User.User;
+import com.springboot.Location.Location;
+import com.springboot.User.User;
+
+
 
 @Service
 public class PostService {
@@ -16,7 +18,7 @@ public class PostService {
 	"u1", 
 	"Jany", 
 	"Lawrence",
-	new Location("l1", "Lagos"),
+	new com.springboot.Location.Location("l1", "Lagos"),
 	"Jany@gmail.com");
 	
    User user2 = new User(
