@@ -1,13 +1,14 @@
-package com.springboot.Location;
+package com.springboot.Jenkins.Location;
 
 import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -15,7 +16,7 @@ public class LocationController {
 	
    @Autowired
    private LocationService locationService;
-   
+   /*
    @RequestMapping(method=RequestMethod.POST, value="/locations")
    public void addLocation(@RequestBody Location location) {
    	locationService.addLocation(location);
@@ -36,20 +37,26 @@ public class LocationController {
    public Location getLocation(@PathVariable String id) {
    	return locationService.getLocation(id);
    }
+   */
    
 
    
-   
-   
-   //DataBase functions
-   @GetMapping("/allLocations")  
-   private List<Location> getAllLocationsDb()   
+   @GetMapping("/locations")  
+   private List<Location> allLocations()   
    {  
-   return locationService.getAllLocationsFromDB();  
+   return locationService.allLocations();  
    }  
-   @GetMapping("/student/{id}")  
-   private Location getLocation(@PathVariable("id") int id)   
+   
+   @GetMapping("/locations/{id}")  
+   private Location getLocationById(@PathVariable("id") String id)   
    {  
    return locationService.getLocationById(id);  
+   }
+   
+   @PostMapping("/locations")
+   private Location insertLocation(@Valid @RequestBody Location location)   
+   {  
+   return locationService.insertLocation(location);  
    }  
+   
 }

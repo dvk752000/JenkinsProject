@@ -1,5 +1,4 @@
-package com.springboot.Location;
-
+package com.springboot.Jenkins.Location;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,6 +35,10 @@ public class Location {
 		super();
 		this.id = id;
 		this.name = name;
+	}
+	@Override
+	public String toString() {
+		return "Location [id=" + id + ", name=" + name + "]";
 	}
 	   
 	}

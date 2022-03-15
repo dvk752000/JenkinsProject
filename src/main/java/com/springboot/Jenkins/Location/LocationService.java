@@ -1,7 +1,6 @@
-package com.springboot.Location;
+package com.springboot.Jenkins.Location;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,20 +14,26 @@ public class LocationService {
 	   LocationRepository locationRepository;  
 	   
 	   //getting all student records  
-	   public List<Location> getAllLocationsFromDB()   
+	   public List<Location> allLocations()   
 	   {  
 	   List<Location> locations = new ArrayList<Location>();  
 	   locationRepository.findAll().forEach(location -> locations.add(location));  
 	   return locations;  
 	   }  
 	   
-	   public Location getLocationById(int id)   
+	   public Location getLocationById(String id)   
 	   {  
 	   return locationRepository.findById(id).get();  
 	   }  
+	   
+	   
+	   public Location insertLocation(Location location) {
+		   System.out.println(location.toString());
+	       return locationRepository.save(location);
+	   }
 	
 	
-	
+/*	
    Location location1 = new Location("l1", "Lagos");
    Location location2 = new Location("l2", "Asaba");
    Location location3 = new Location("l3", "Budapest");	
@@ -55,8 +60,8 @@ public class LocationService {
    public void deleteLocation(String id) {
 	    locations.removeIf(t -> t.getId().equals(id));
 	}
-   
-   
-   
+   */
+
+
 
 }
