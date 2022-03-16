@@ -1,5 +1,8 @@
 pipeline {
-    agent any
+    agent {
+    	docker {image 'node :16-alpine'
+    }
+
     
     environment {
     	DOCKERHUB_CREDENTIALS=credentials('dockerhub')
