@@ -24,10 +24,10 @@ pipeline {
                 app = docker.build("vadudduk/jenkinssbj") 
             }
         }
-        stage('Run Docker Image') {
-            steps {
-                sh 'docker run -d  -p 8081:8081 --name jenkinssb -v jendoc --network jendoc -e spring.datasource.url=jdbc:hsqldb:hsql://hsqldb/test jenkinssb'
-            }
-        }
+        stage('Push image') {
+                      docker.withRegistry('https://registry.hub.docker.com', 'git') {                   app.push("${env.BUILD_NUMBER}")            
+       app.push("latest")        
+              }    
+           }
     }
 }
