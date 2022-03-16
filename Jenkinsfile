@@ -1,6 +1,9 @@
 pipeline {
     agent any
     
+    environment {
+		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
+	}
 
     stages {
     	
@@ -21,6 +24,20 @@ pipeline {
                 sh 'docker build --build-arg JAR_FILE=build/libs/*.jar -t jenkinssb .'
             }
         }
+        
+        stage('Login') {
+
+			steps {
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+			}
+		}
+
+		stage('Push') {
+
+			steps {
+				sh 'docker push vadudduk/jenkinssbj'
+			}
+		}
 
     }
 }
