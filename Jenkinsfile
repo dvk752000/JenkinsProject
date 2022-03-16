@@ -36,7 +36,6 @@ pipeline {
 
 			steps {
 				sh 'docker image tag jenkinssb jenkinssb'
-				sh 'docker push jenkinssb'
 			}
 		}
 
