@@ -3,6 +3,7 @@ pipeline {
     triggers {
         pollSCM '* * * * *'
     }
+    docker { image 'jenkinssb' }
     stages {
     	
 	    
