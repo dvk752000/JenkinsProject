@@ -1,33 +1,36 @@
 pipeline {
-    agent {
-        docker { image 'jenkinssb' }
-    }
-    triggers {
-        pollSCM '* * * * *'
-    }
-    stages {
-    	
-	    
-        stage('Build') {
-            steps {
-                
-    			sh './gradlew build'
-            }
-        }
-         stage('Test') {
-            steps {
-                sh './gradlew test'
-            }
-        }
-        stage('Build Docker Image') {
-            steps {
-                sh 'docker build --build-arg JAR_FILE=build/libs/*.jar -t jenkinssb .'
-            }
-        }
-        stage('Run Docker Image') {
-            steps {
-                sh 'docker run -d  -p 8081:8081 --name jenkinssb -v jendoc --network jendoc -e spring.datasource.url=jdbc:hsqldb:hsql://hsqldb/test jenkinssb'
-            }
-        }
-    }
+environment {
+registry = "vadudduk@cisco.com/vadudduk"
+registryCredential = 'vadudduk'
+dockerImage = 'jenkinssb'
+}
+agent any
+stages {
+stage('Cloning our Git') {
+steps {
+git 'https://github.com/dvk752000/JenkinsProject.git'
+}
+}
+stage('Building our image') {
+steps{
+script {
+dockerImage = docker.build registry + ":$BUILD_NUMBER"
+}
+}
+}
+stage('Deploy our image') {
+steps{
+script {
+docker.withRegistry( '', registryCredential ) {
+dockerImage.push()
+}
+}
+}
+}
+stage('Cleaning up') {
+steps{
+sh "docker rmi $registry:$BUILD_NUMBER"
+}
+}
+}
 }
