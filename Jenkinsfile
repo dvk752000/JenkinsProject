@@ -1,10 +1,10 @@
 pipeline {
-    agent {
-        docker { image 'jenkinssb' }
+    agent any
+    
+    environment {
+    	DOCKERHUB_CREDENTIALS=credentials('dockerhub')
     }
-    triggers {
-        pollSCM '* * * * *'
-    }
+
     stages {
     	
 	    
@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                app = docker.build("vadudduk/jenkinssbj") 
+                sh 'docker build --build-arg JAR_FILE=build/libs/\*.jar -t jenkinssb .'
             }
         }
 
