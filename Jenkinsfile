@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                sh 'docker build --build-arg JAR_FILE=build/libs/\*.jar -t jenkinssb .'
+                sh 'docker build --build-arg JAR_FILE=build/libs/*.jar -t jenkinssb .'
             }
         }
         stage('Run Docker Image') {
