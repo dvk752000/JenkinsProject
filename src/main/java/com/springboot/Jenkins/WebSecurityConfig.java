@@ -35,6 +35,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	        String password = null;
 
 	        System.out.println("\nPlease set the admin credentials for this web application (will be required when browsing to the web application)");
+	        username = "vadudduk";
+	        password = "password";
+	        /*
 	        Console console = System.console();
 
 	        // Read the credentials from the user console: 
@@ -83,8 +86,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	                    break;
 	                }
 	                System.out.println("");
+
 	            }
-	        }
+	        }*/
 
 	        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
 	        if (username != null && password != null) {
