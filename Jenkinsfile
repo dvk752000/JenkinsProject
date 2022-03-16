@@ -35,8 +35,8 @@ pipeline {
 		stage('Push') {
 
 			steps {
-				sh 'docker image tag jenkinssb vadudduk/jenkinssbj'
-				sh 'docker push vadudduk/jenkinssbj'
+				sh 'docker image tag jenkinssb jenkinssb'
+				sh 'docker push jenkinssb'
 			}
 		}
 
