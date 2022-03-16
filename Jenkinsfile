@@ -19,12 +19,12 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                sh './gradlew docker'
+                sh './gradlew bootBuildImage --imageName=jenkinssb'
             }
         }
         stage('Run Docker Image') {
             steps {
-                sh './gradlew dockerRun'
+                sh 'docker run -it -p8080:8080 jenkinssb'
             }
         }
     }
