@@ -2,8 +2,6 @@ plugins {
 	id 'org.springframework.boot' version '2.6.4'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
-	
-
 }
 
 group = 'com.springboot'
@@ -44,4 +42,3 @@ compileTestJava {
   sourceCompatibility = '1.8'
   targetCompatibility = '1.8'
 }
-
