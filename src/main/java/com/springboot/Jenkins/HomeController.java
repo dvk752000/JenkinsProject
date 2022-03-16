@@ -15,4 +15,6 @@ public class HomeController {
 	public static String HomeScreen() {
 	    return "Welcome to Spring Boot Home Screen \n";
 	}
+	
+	
 }

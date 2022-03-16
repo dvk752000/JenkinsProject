@@ -19,12 +19,12 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                sh './gradlew bootBuildImage --imageName=jenkinssb'
+                sh 'docker build --build-arg JAR_FILE=build/libs/\*.jar -t jenkinssb .'
             }
         }
         stage('Run Docker Image') {
             steps {
-                sh 'docker run -it -p8080:8080 jenkinssb'
+                sh 'docker run -d  -p 8081:8081 --name jenkinssb -v jendoc --network jendoc -e spring.datasource.url=jdbc:hsqldb:hsql://hsqldb/test jenkinssb'
             }
         }
     }
