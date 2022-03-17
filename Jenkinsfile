@@ -36,7 +36,7 @@ pipeline {
 
 			steps {
 				sh 'docker image tag jenkinssb jenkinssb'
-				sh 'docker run -d  -p 8081:8081 --name jenkinssb -v jendoc jenkinssb '
+				sh 'docker run -d  -p 8081:8081 --name jenkinssb -v jendoc --network jendoc -e spring.datasource.url=jdbc:hsqldb:hsql://hsqldb/test jenkinssb'
 			}
 		}
 
