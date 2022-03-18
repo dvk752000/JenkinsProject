@@ -39,7 +39,7 @@ pipeline {
 				
 				script{
                 
-                    def doc_containers = sh(returnStdout: true, script: 'docker ps --filter "name=hsqlb"  ).replaceAll("\n", " ") 
+                    def doc_containers = sh(returnStdout: true, script: 'docker ps --filter "name=jenkinssb")
                     if (doc_containers) {
                         sh "docker stop ${doc_containers}"
                         sh 'docker rm ${doc_containers}'
