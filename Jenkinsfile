@@ -39,7 +39,8 @@ pipeline {
                 
                     def doc_containers = sh(returnStdout: true, script: "docker ps --filter name=jenkinssb --format '{{.Names}}'").replaceAll("\n", " ") 
                     if (doc_containers) {
-                        sh "echo ${doc_containers}"
+                        sh "docker stop ${doc_containers}"
+                        sh 'docker remove ${doc_containers}'
                     }
                     
                 }
