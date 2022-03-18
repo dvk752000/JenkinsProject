@@ -37,7 +37,7 @@ pipeline {
             steps{
                 script{
                 
-                    def doc_containers = sh(returnStdout: true, script: 'docker ps --filter "name=jenkinssb').replaceAll("\n", " ") 
+                    def doc_containers = sh(returnStdout: true, script: 'docker ps --filter name=jenkinssb').replaceAll("\n", " ") 
                     if (doc_containers) {
                         sh "docker stop ${doc_containers}"
                     }
