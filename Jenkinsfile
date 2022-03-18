@@ -32,20 +32,24 @@ pipeline {
 			}
 		}
 
+
+		stage('Clean docker containers'){
+            steps{
+                script{
+                
+                    def doc_containers = sh(returnStdout: true, script: 'docker ps --filter "name=jenkinssb').replaceAll("\n", " ") 
+                    if (doc_containers) {
+                        sh "docker stop ${doc_containers}"
+                    }
+                    
+                }
+            }
+        }
+        
 		stage('Push and Run') {
 
 			steps {
 				sh 'docker image tag jenkinssb jenkinssb'
-				
-				script{
-                
-                    def doc_containers = sh(returnStdout: true, script: 'docker ps --filter "name=jenkinssb")
-                    if (doc_containers) {
-                        sh "docker stop ${doc_containers}"
-                        sh 'docker rm ${doc_containers}'
-                    }
-                    
-                }
 				
 				sh 'docker run -d  -p 8081:8081 --name jenkinssb -v jendoc --network jendoc -e spring.datasource.url=jdbc:hsqldb:hsql://hsqldb/test jenkinssb'
 			}
