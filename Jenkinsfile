@@ -50,7 +50,7 @@ pipeline {
             steps{
                 script{
                 
-                    def doc_containers = sh(returnStdout: true, script: "docker ps --filter "status=exited" --filter name=jenkinssb --format '{{.Names}}'").replaceAll("\n", " ") 
+                    def doc_containers = sh(returnStdout: true, script: "docker ps --filter status=exited --filter name=jenkinssb --format '{{.Names}}'").replaceAll("\n", " ") 
                     if (doc_containers) {
                         sh 'docker rm ${doc_containers}'
                     }
