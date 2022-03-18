@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                sh 'docker build --build-arg JAR_FILE=build/libs/*.jar -t jenkinssb .'
+                sh 'docker build --build-arg JAR_FILE=build/libs/*.jar -t ${imageName} .'
             }
         }
         
@@ -37,7 +37,7 @@ pipeline {
             steps{
                 script{
                 
-                    def doc_containers = sh(returnStdout: true, script: "docker ps --filter name=jenkinssb --format '{{.Names}}'").replaceAll("\n", " ") 
+                    def doc_containers = sh(returnStdout: true, script: "docker ps --filter name=${imageName} --format '{{.Names}}'").replaceAll("\n", " ") 
                     if (doc_containers) {
                         sh "docker stop ${doc_containers}"
                     }
@@ -49,12 +49,10 @@ pipeline {
 		stage('Remove docker containers'){
             steps{
                 script{
-                
-                    def doc_containers = sh(returnStdout: true, script: "docker ps --filter status=exited --filter name=jenkinssb --format '{{.Names}}'").replaceAll("\n", " ") 
+                    def doc_containers = sh(returnStdout: true, script: "docker ps --filter status=exited --filter name=${imageName} --format '{{.Names}}'").replaceAll("\n", " ") 
                     if (doc_containers) {
                         sh "docker rm ${doc_containers}"
                     }
-                    
                 }
             }
         }
@@ -62,9 +60,9 @@ pipeline {
 		stage('Push and Run') {
 
 			steps {
-				sh 'docker image tag jenkinssb jenkinssb'
+				sh 'docker image tag ${imageName} ${imageName}'
 				
-				sh 'docker run -d  -p 8081:8081 --name jenkinssb -v jendoc --network jendoc -e spring.datasource.url=jdbc:hsqldb:hsql://hsqldb/test jenkinssb'
+				sh 'docker run -d  -p ${portToRun}:${portToRun} --name ${imageName} -v ${imageVolume} --network ${imageVolume} -e spring.datasource.url=${hsqlSource} ${imageName}'
 			}
 		}
 
