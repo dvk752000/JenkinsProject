@@ -37,11 +37,15 @@ pipeline {
 			steps {
 				sh 'docker image tag jenkinssb jenkinssb'
 				
-				def inspectExitCode = sh script: "docker service inspect jenkinssb", returnStatus: true
-				if (inspectExitCode == 0) {
-				    sh 'docker stop jenkinssb'
-				    sh 'docker rm jenkinssb'
-				}
+				script{
+                
+                    def doc_containers = sh(returnStdout: true, script: 'docker ps --filter "name=hsqlb"  ).replaceAll("\n", " ") 
+                    if (doc_containers) {
+                        sh "docker stop ${doc_containers}"
+                        sh 'docker rm ${doc_containers}'
+                    }
+                    
+                }
 				
 				sh 'docker run -d  -p 8081:8081 --name jenkinssb -v jendoc --network jendoc -e spring.datasource.url=jdbc:hsqldb:hsql://hsqldb/test jenkinssb'
 			}
