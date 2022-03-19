@@ -15,7 +15,7 @@ public class LocationService {
 	   LocationRepository locationRepository;  
 
 	   @Value( "${temp}" )
-	   private String jdbcUrl;
+	   private String jdbcUrl1;
 	   
 	   //getting all student records  
 	   public List<Location> allLocations()   
@@ -39,7 +39,7 @@ public class LocationService {
 	public Location update(String id) {
 		
 		Location locationFromDb = locationRepository.findById(id).get();
-		System.out.println("setDbData has a value: " + jdbcUrl);
+		System.out.println("setDbData has a value: " + jdbcUrl1);
 		//locationFromDb.setName(message);
 
 	    return locationRepository.save(locationFromDb);
