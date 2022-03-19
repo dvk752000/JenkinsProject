@@ -18,7 +18,7 @@ public class LocationService {
 	   LocationRepository locationRepository;  
 	   
 	   @Value("${message}")
-	    private String message;
+	    private String msg;
 	   
 	   //getting all student records  
 	   public List<Location> allLocations()   
