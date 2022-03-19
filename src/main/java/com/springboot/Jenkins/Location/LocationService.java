@@ -19,7 +19,7 @@ public class LocationService {
 	   LocationRepository locationRepository;  
 	   
 	   @Autowired
-	    Environment env;
+	   Environment env;
 	   
 	   String message = env.getProperty("message");
 	   
