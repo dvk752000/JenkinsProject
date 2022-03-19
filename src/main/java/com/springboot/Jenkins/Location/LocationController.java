@@ -63,9 +63,8 @@ public class LocationController {
    }  
   
    @GetMapping("/locationsUpdate/{id}")  
-	public String save(@ModelAttribute("product") String id) {
-	   locationService.update(id);
-		return "product/success";
+	public Location updateDatabaseJenkinsInput(@PathVariable("id") String id) {
+	   return locationService.update(id);
 	}
    
    

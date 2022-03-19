@@ -34,8 +34,7 @@ public class LocationService {
 	   }
 
 	public Location update(String id) {
-		Location locationFromDb = locationRepository.findById(id).get(); 
-	    // crush the variables of the object found
+		Location locationFromDb = locationRepository.findById(id).get();
 		locationFromDb.setName(System.getProperty("setDbData"));
 	    return locationRepository.save(locationFromDb);
 		
