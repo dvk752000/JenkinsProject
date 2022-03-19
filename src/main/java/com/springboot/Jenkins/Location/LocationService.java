@@ -15,7 +15,7 @@ public class LocationService {
 	   @Autowired  
 	   LocationRepository locationRepository;  
 	   
-	   @Value("${setDbData}")
+	   @Value("${setDbDataValue}")
 		private String setDbDataValue;
 	   
 	   //getting all student records  
