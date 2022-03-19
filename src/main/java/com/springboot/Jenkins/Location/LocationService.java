@@ -16,7 +16,7 @@ public class LocationService {
 	   @Autowired  
 	   LocationRepository locationRepository;  
 
-	   @Value("${db.message}")
+	   @Value("${db.message:Nothing}")
 	   private String appTitle;
 	   
 	   
