@@ -9,17 +9,13 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 @Service
-@PropertySource("jenkins.properties")
+@PropertySource("classpath:jenkins.properties")
 public class LocationService {
 	
 	   //database
 	   @Autowired  
 	   LocationRepository locationRepository;  
 	   
-	   @Autowired
-	   Environment env;
-	   
-	   String message = env.getProperty("message");
 	   
 	   //getting all student records  
 	   public List<Location> allLocations()   
@@ -43,8 +39,8 @@ public class LocationService {
 	public Location update(String id) {
 		
 		Location locationFromDb = locationRepository.findById(id).get();
-		System.out.println("setDbData has a value: " + message);
-		locationFromDb.setName(message);
+		//System.out.println("setDbData has a value: " + message);
+		//locationFromDb.setName(message);
 
 	    return locationRepository.save(locationFromDb);
 		
