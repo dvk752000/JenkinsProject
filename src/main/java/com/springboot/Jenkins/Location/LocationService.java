@@ -41,7 +41,7 @@ public class LocationService {
 	public Location update(String id) {
 		
 		Location locationFromDb = locationRepository.findById(id).get();
-		locationFromDb.setName(env.getProperty("userBucket.path"));
+		locationFromDb.setName(env.getProperty("valueDbDataToBeUpdated"));
 		//System.out.println("setDbData has a value: " + System.getProperty("setDbData"));
 	
 	    return locationRepository.save(locationFromDb);
