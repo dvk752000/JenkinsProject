@@ -6,19 +6,22 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
+import org.springframework.core.env.Environment;
 
 @Service
-@PropertySource(ignoreResourceNotFound = true, value = "classpath:application.properties")
 public class LocationService {
 	
 	   //database
 	   @Autowired  
 	   LocationRepository locationRepository;  
 	   
-	   @Value("${pp.message}")
-	    private String message;
+	   @Autowired
+	    Environment env;
+	   
+	   String message = env.getProperty("message");
 	   
 	   //getting all student records  
 	   public List<Location> allLocations()   
