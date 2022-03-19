@@ -18,7 +18,7 @@ public class LocationService {
 	   @Autowired  
 	   LocationRepository locationRepository;  
 
-	   @Value("${my}")
+	   @Value("${spring.datasource.url}")
 	   private String jdbcUrl1;
 	   
 	   //getting all student records  
