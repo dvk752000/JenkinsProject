@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,8 @@ public class LocationService {
 	   @Autowired  
 	   LocationRepository locationRepository;  
 	   
+	   @Value("${message}")
+	    private String message;
 	   
 	   //getting all student records  
 	   public List<Location> allLocations()   
