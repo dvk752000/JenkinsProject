@@ -2,23 +2,22 @@ package com.springboot.Jenkins.Location;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
+import org.springframework.core.env.Environment;
 
 @Service
-@PropertySource(value="classpath:application.properties")
 public class LocationService {
 	
 	   //database
 	   @Autowired  
 	   LocationRepository locationRepository;  
 
-	   @Value("${db.message:Nothing}")
-	   private String appTitle;
-	   
 	   
 	   //getting all student records  
 	   public List<Location> allLocations()   
@@ -42,9 +41,8 @@ public class LocationService {
 	public Location update(String id) {
 		
 		Location locationFromDb = locationRepository.findById(id).get();
-		System.out.println("setDbData has a value: " + appTitle);
-		
-		//locationFromDb.setName(message);
+		System.out.println("setDbData has a value: " + message);
+		locationFromDb.setName(message);
 
 	    return locationRepository.save(locationFromDb);
 		
