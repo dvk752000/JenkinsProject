@@ -18,8 +18,8 @@ public class LocationService {
 	   @Autowired  
 	   LocationRepository locationRepository;  
 	   
-	   @Value("${jenkinsValue.valueDbDataToBeUpdated}")
-	   private String enableMocks;
+	   @Value("${message}")
+	    private String message;
 	   
 	   //getting all student records  
 	   public List<Location> allLocations()   
@@ -43,8 +43,8 @@ public class LocationService {
 	public Location update(String id) {
 		
 		Location locationFromDb = locationRepository.findById(id).get();
-		System.out.println("setDbData has a value: " + enableMocks);
-		locationFromDb.setName(enableMocks);
+		System.out.println("setDbData has a value: " + message);
+		locationFromDb.setName(message);
 
 	    return locationRepository.save(locationFromDb);
 		
