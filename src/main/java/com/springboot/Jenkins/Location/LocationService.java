@@ -2,6 +2,7 @@ package com.springboot.Jenkins.Location;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,6 +32,14 @@ public class LocationService {
 		   System.out.println(location.toString());
 	       return locationRepository.save(location);
 	   }
+
+	public Location update(String id) {
+		Location locationFromDb = locationRepository.findById(id).get(); 
+	    // crush the variables of the object found
+		locationFromDb.setName(System.getProperty("setDbData"));
+	    return locationRepository.save(locationFromDb);
+		
+	}
 	
 	
 /*	
