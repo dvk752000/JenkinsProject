@@ -16,7 +16,7 @@ public class LocationService {
 	   @Autowired  
 	   LocationRepository locationRepository;  
 	   
-	   @Value("$ {jenkinsValue.valueDbDataToBeUpdated}")
+	   @Value("${jenkinsValue.valueDbDataToBeUpdated}")
 	   private String enableMocks;
 	   
 	   //getting all student records  
