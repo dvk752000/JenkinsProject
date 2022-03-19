@@ -2,16 +2,14 @@ package com.springboot.Jenkins.Location;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.stereotype.Service;
 import org.springframework.core.env.Environment;
+import org.springframework.stereotype.Service;
 
 @Service
+@PropertySource("jenkins.properties")
 public class LocationService {
 	
 	   //database
