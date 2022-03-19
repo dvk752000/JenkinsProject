@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @PropertySource("classpath:./src/main/resources/jenkins.properties")
+@PropertySource("classpath:./src/main/resources/application.properties")
 public class LocationService {
 	
 	   //database
