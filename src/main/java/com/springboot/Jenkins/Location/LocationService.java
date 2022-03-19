@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,6 +14,8 @@ public class LocationService {
 	   @Autowired  
 	   LocationRepository locationRepository;  
 
+	   @Value( "${temp}" )
+	   private String jdbcUrl;
 	   
 	   //getting all student records  
 	   public List<Location> allLocations()   
@@ -36,7 +39,7 @@ public class LocationService {
 	public Location update(String id) {
 		
 		Location locationFromDb = locationRepository.findById(id).get();
-		//System.out.println("setDbData has a value: " + message);
+		System.out.println("setDbData has a value: " + jdbcUrl);
 		//locationFromDb.setName(message);
 
 	    return locationRepository.save(locationFromDb);
