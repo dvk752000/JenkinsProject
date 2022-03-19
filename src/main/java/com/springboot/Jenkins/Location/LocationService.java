@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Configuration
-@PropertySource("application.properties")
+@PropertySource("classpath:application.properties")
 public class LocationService {
 	
 	   //database
