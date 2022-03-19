@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,6 +14,10 @@ public class LocationService {
 	   @Autowired  
 	   LocationRepository locationRepository;  
 
+	   @Autowired
+	   private Environment env;
+	   
+	   String keyValue = env.getProperty("spring.datasource.url");
 	   
 	   //getting all student records  
 	   public List<Location> allLocations()   
@@ -36,7 +41,7 @@ public class LocationService {
 	public Location update(String id) {
 		
 		Location locationFromDb = locationRepository.findById(id).get();
-		System.out.println("setDbData has a value: " + System.getProperty("spring.datasource.url"));
+		System.out.println("setDbData has a value: " + keyValue);
 		
 		//locationFromDb.setName(message);
 
