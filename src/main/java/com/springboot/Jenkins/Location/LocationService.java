@@ -11,14 +11,14 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Configuration
-@PropertySource("classpath:application.properties")
+@PropertySource("classpath:application.yaml")
 public class LocationService {
 	
 	   //database
 	   @Autowired  
 	   LocationRepository locationRepository;  
 
-	   @Value("${my.app.prop}")
+	   @Value("${my}")
 	   private String jdbcUrl1;
 	   
 	   //getting all student records  
