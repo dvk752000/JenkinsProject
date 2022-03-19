@@ -9,7 +9,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
 @Service
-@PropertySource("classpath:/Jenkins/src/main/resources/jenkins.properties")
+@PropertySource("classpath:./src/main/resources/jenkins.properties")
 public class LocationService {
 	
 	   //database
