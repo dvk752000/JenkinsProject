@@ -15,8 +15,6 @@ public class LocationService {
 	   @Autowired  
 	   LocationRepository locationRepository;  
 	   
-	   @Value("${valueDbDataToBeUpdated}")
-		private String ValueVariableDbData;
 	   
 	   //getting all student records  
 	   public List<Location> allLocations()   
@@ -40,7 +38,8 @@ public class LocationService {
 	public Location update(String id) {
 		
 		Location locationFromDb = locationRepository.findById(id).get();
-		locationFromDb.setName(ValueVariableDbData);
+		locationFromDb.setName(System.getProperty("setDbData"));
+		System.out.println("setDbData has a value: " + System.getProperty("setDbData"));
 	
 	    return locationRepository.save(locationFromDb);
 		
