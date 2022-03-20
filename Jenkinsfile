@@ -78,7 +78,7 @@ pipeline {
 				script{
 					
 					if ("{$dataDb}" != "Default Location") {                                          
-				        sh 'open http://localhost:8081/locationsUpdate/1/$dataDb'
+				        sh 'http://localhost:8081/locationsUpdate/1/$dataDb'
 				    } 
 					
 				}
