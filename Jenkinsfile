@@ -78,7 +78,7 @@ pipeline {
 				script{
 					
 					if ("{$dataDb}" != "Default") {                                          
-				        sh 'httpRequest http://localhost:8081/locationsUpdate/1/$dataDb'
+				        httpRequest "http://localhost:8081/locationsUpdate/1/$dataDb"
 				    } 
 					
 				}
