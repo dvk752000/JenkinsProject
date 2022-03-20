@@ -16,7 +16,7 @@ public class LocationService {
 	   @Autowired  
 	   LocationRepository locationRepository;  
 
-	   @Value("${dbParameter}")
+	   @Value("${datadbvalue}")
 	   private String jdbcUrl1;
 	   
 	   //getting all student records  
