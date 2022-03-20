@@ -3,7 +3,7 @@ pipeline {
     
     environment {
 		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
-		dbval="{$dataDb}"
+		$dbval="{$dataDb}"
 	}
 
     stages {
