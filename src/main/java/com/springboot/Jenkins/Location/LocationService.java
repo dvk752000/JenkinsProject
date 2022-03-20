@@ -10,8 +10,6 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
 @Service
-@Configuration
-@PropertySource("classpath:application.yaml")
 public class LocationService {
 	
 	   //database
