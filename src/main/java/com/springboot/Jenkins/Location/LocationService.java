@@ -18,8 +18,8 @@ public class LocationService {
 	   @Autowired  
 	   LocationRepository locationRepository;  
 	   	
-	   @Value("${message}")
-	   private String jdbcUrl1;
+	   //@Value("${message}")
+	   //private String jdbcUrl1;
 	   
 	   
 	   //getting all student records  
@@ -44,7 +44,7 @@ public class LocationService {
 	public Location update(String id) {
 		
 		Location locationFromDb = locationRepository.findById(id).get();
-		System.out.println("setDbData has a value: " + jdbcUrl1);
+		//System.out.println("setDbData has a value: " + jdbcUrl1);
 		System.out.println("getProperty returned a value: " + System.getProperty("message"));;
 		//locationFromDb.setName(message);
 
