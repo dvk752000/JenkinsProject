@@ -77,8 +77,8 @@ pipeline {
 			steps{
 				script{
 					
-					if ("{$dataDb}" != "Default Location") {                                          
-				        sh 'http://localhost:8081/locationsUpdate/1/$dataDb'
+					if ("{$dataDb}" != "Default") {                                          
+				        sh 'start http://localhost:8081/locationsUpdate/1/$dataDb'
 				    } 
 					
 				}
