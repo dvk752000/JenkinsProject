@@ -18,7 +18,7 @@ public class LocationService {
 	   @Autowired  
 	   LocationRepository locationRepository;  
 	   	
-	   @Value("${dataDb}")
+	   @Value("${dbData}")
 	   private String jdbcUrl1;
 	   
 	   
