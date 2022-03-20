@@ -69,9 +69,19 @@ pipeline {
 
 			steps {
 				sh 'docker image tag ${imageName} ${imageName}'
-				sh 'echo "$dbval"'
-				
 				sh 'docker run -d  -p ${portToRun}:${portToRun} --name ${imageName} -v ${imageVolume} --network ${imageVolume} -e spring.datasource.url=${hsqlSource} ${imageName}'
+			}
+		}
+		
+		stage('Check to update a row'){
+			steps{
+				script{
+					
+					if ("{$dataDb}" != "Default Location") {                                          
+				        sh 'open http://localhost:8081/locationsUpdate/1/$dataDb'
+				    } 
+					
+				}
 			}
 		}
 

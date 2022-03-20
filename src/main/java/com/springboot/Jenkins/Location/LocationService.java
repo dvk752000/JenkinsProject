@@ -41,16 +41,26 @@ public class LocationService {
 	       return locationRepository.save(location);
 	   }
 
-	public Location update(String id) {
-		
-		Location locationFromDb = locationRepository.findById(id).get();
-		//System.out.println("setDbData has a value: " + jdbcUrl1);
-		System.out.println("getProperty returned a value: " + System.getProperty("${hsqlSource}"));;
-		//locationFromDb.setName(message);
+	   public Location update(String id) {
+			
+			Location locationFromDb = locationRepository.findById(id).get();
+			//System.out.println("setDbData has a value: " + jdbcUrl1);
+			//System.out.println("getProperty returned a value: " + System.getProperty("${hsqlSource}"));;
 
-	    return locationRepository.save(locationFromDb);
-		
-	}
+		    return locationRepository.save(locationFromDb);
+			
+		}
+	   
+	   public Location update(String id, String name) {
+			
+			Location locationFromDb = locationRepository.findById(id).get();
+			locationFromDb.setName(name);
+			//System.out.println("setDbData has a value: " + jdbcUrl1);
+			//System.out.println("getProperty returned a value: " + System.getProperty("${hsqlSource}"));;
+
+		    return locationRepository.save(locationFromDb);
+			
+		}
 	
 	
 /*	
