@@ -45,7 +45,7 @@ public class LocationService {
 		
 		Location locationFromDb = locationRepository.findById(id).get();
 		//System.out.println("setDbData has a value: " + jdbcUrl1);
-		System.out.println("getProperty returned a value: " + System.getProperty("message"));;
+		System.out.println("getProperty returned a value: " + System.getProperty("dbval"));;
 		//locationFromDb.setName(message);
 
 	    return locationRepository.save(locationFromDb);
