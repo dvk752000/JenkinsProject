@@ -3,7 +3,6 @@ pipeline {
     
     environment {
 		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
-		dataDbValue="${dataDb}"
 	}
 
     stages {
@@ -71,7 +70,7 @@ pipeline {
 				sh 'docker image tag ${imageName} ${imageName}'
 				sh 'echo "${dataDb}"'
 				
-				sh 'docker run -d  -p ${portToRun}:${portToRun} --name ${imageName} -v ${imageVolume} --network ${imageVolume} -e spring.datasource.url=${hsqlSource} -e datadbvalue=${dataDbValue} ${imageName}'
+				sh 'docker run -d  -p ${portToRun}:${portToRun} --name ${imageName} -v ${imageVolume} --network ${imageVolume} -e spring.datasource.url=${hsqlSource} -e datadbvalue=${dataDb} ${imageName}'
 			}
 		}
 
