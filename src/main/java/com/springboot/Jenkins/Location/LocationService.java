@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,8 +18,9 @@ public class LocationService {
 	   @Autowired  
 	   LocationRepository locationRepository;  
 	   	
-	   //@Value("${dbData}")
-	   //private String jdbcUrl1;
+	   @Value("${dataDb}")
+	   private String jdbcUrl1;
+	   
 	   
 	   //getting all student records  
 	   public List<Location> allLocations()   
@@ -42,7 +44,7 @@ public class LocationService {
 	public Location update(String id) {
 		
 		Location locationFromDb = locationRepository.findById(id).get();
-		//System.out.println("setDbData has a value: " + jdbcUrl1);
+		System.out.println("setDbData has a value: " + jdbcUrl1);
 		//locationFromDb.setName(message);
 
 	    return locationRepository.save(locationFromDb);
