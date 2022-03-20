@@ -78,7 +78,7 @@ pipeline {
 				script{
 					
 					if ("{$dataDb}" != "Default") {                                          
-				        sh 'start http://localhost:8081/locationsUpdate/1/$dataDb'
+				        bat 'start http://localhost:8081/locationsUpdate/1/$dataDb'
 				    } 
 					
 				}
