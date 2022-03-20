@@ -69,7 +69,7 @@ pipeline {
 
 			steps {
 				sh 'docker image tag ${imageName} ${imageName}'
-				sh 'echo "${dbval}"'
+				sh 'echo "$dbval"'
 				
 				sh 'docker run -d  -p ${portToRun}:${portToRun} --name ${imageName} -v ${imageVolume} --network ${imageVolume} -e spring.datasource.url=${hsqlSource} ${imageName}'
 			}
