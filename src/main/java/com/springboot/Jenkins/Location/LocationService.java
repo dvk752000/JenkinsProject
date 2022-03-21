@@ -19,10 +19,10 @@ public class LocationService {
 	   LocationRepository locationRepository;  
 	   	
 	   @Value(value = "${dataToBeUpdated}")
-	   private String dbDataVal;
+	   private String dataToBeUpdated;
 	   
-	   @Value("${spring.datasource.url}")
-	   private String hsqlURL;
+	   private String[] dataToBeUpdatedArray = dataToBeUpdated.split("\\s+");
+
 	   
 	   
 	   //getting all student records  
@@ -58,8 +58,7 @@ public class LocationService {
 			
 			Location locationFromDb = locationRepository.findById(id).get();
 			locationFromDb.setName(name);
-			System.out.println("dbDataVal has a value: " + dbDataVal);
-			System.out.println("hsqlURL has a value: " + hsqlURL);
+			System.out.println("dbDataVal has a value: " + dataToBeUpdatedArray.toString());
 			//System.out.println("getProperty returned a value: " + System.getProperty("${hsqlSource}"));;
 
 		    return locationRepository.save(locationFromDb);
