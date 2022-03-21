@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 
 @Entity
 @Table
-@Component
 public class Location {
 	@Id
 	@Column
