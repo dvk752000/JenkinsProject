@@ -64,6 +64,11 @@ pipeline {
                     if (doc_containers) {
                         sh "docker rm ${doc_containers}"
                     }
+                    
+                    def doc_volumes = sh(returnStdout: true, script: "docker volume ls --filter name=${imageVolume} --format '{{.Names}}'").replaceAll("\n", " ")
+                    if (doc_volumes) {
+                    	sh "docker volume rm ${imageVolume}"
+                    }
                 }
             }
         }
@@ -73,6 +78,7 @@ pipeline {
 			steps {
 				sh 'docker image tag ${imageName} "$user"/${imageName}'
 				sh 'docker push "$user"/${imageName}'
+				sh 'docker volume create "${imageVolume}"'
 				sh '''docker run -d  -p ${portToRun}:${portToRun} --name ${imageName} -v ${imageVolume} --network ${imageVolume} 
 																	-e spring.datasource.url=${hsqlSource}
 																	-e dataToBeUpdated="${dataToBeUpdated}" 
