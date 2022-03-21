@@ -69,7 +69,7 @@ pipeline {
 				sh 'docker run -d  -p ${portToRun}:${portToRun} --name ${imageName} -v ${imageVolume} --network ${imageVolume} 
 																	-e spring.datasource.url=${hsqlSource}
 																	-e dbvalue="${dbData}" 
-																	"$user"/${imageName}'
+																	"$user"/${imageName}'.replaceAll("\n", " ") 
 			}
 		}
 
