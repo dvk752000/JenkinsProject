@@ -19,9 +19,9 @@ public class LocationService {
 	   LocationRepository locationRepository;  
 	   	
 	   @Value(value = "${dataToBeUpdated}")
-	   private String dataToBeUpdatedRecieved;
+	   private String dataToBeUpdated;
 	   
-	   private String[] dataToBeUpdatedArray = dataToBeUpdatedRecieved.split("\\s+");
+	   //private String[] dataToBeUpdatedArray = dataToBeUpdatedRecieved.split("\\s+");
 
 	   
 	   
@@ -58,7 +58,7 @@ public class LocationService {
 			
 			Location locationFromDb = locationRepository.findById(id).get();
 			locationFromDb.setName(name);
-			System.out.println("dbDataVal has a value: " + dataToBeUpdatedArray.toString());
+			System.out.println("dbDataVal has a value: " + dataToBeUpdated.toString());
 			//System.out.println("getProperty returned a value: " + System.getProperty("${hsqlSource}"));;
 
 		    return locationRepository.save(locationFromDb);
