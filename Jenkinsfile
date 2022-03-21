@@ -23,6 +23,7 @@ pipeline {
             }
         }
 
+
         stage('Build Docker Image') {
             steps {
                 sh 'docker build --build-arg  JAR_FILE=build/libs/*.jar -t ${imageName} .'
