@@ -81,6 +81,7 @@ pipeline {
 				sh 'docker volume create "${imageVolume}"'
 				sh '''docker run -d  -p ${portToRun}:${portToRun} --name ${imageName} 
 																	-v ${imageVolume}
+																	--network jendoc 
 																	-e spring.datasource.url=${hsqlSource}
 																	-e dataToBeUpdated="${dataToBeUpdated}" 
 																	"$user"/${imageName}'''.replaceAll("\n", " ") 
