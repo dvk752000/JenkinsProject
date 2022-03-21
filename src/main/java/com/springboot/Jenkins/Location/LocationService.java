@@ -75,6 +75,15 @@ public class LocationService {
 		   return locationRepository.save(location);
 		
 		}
+	   
+	   public Location update(String id, String name) {
+		   
+			
+			Location locationFromDb = locationRepository.findById(id).get();
+			locationFromDb.setName(name);
+			
+		    return locationRepository.save(locationFromDb);
+		}
 	
 	
 /*	

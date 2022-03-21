@@ -67,6 +67,11 @@ public class LocationController {
 	   return locationService.update(id);
 	}
    
+   @GetMapping("/locationsUpdate/{id}/{name}")  
+	public Location updateDatabaseJenkinsInput(@PathVariable("id") String id, @PathVariable("name") String name) {
+	   return locationService.update(id, name);
+	}
+   
    @GetMapping("/locationsUpdate")  
 	public Location updateDatabaseJenkinsInput() {
 	   return locationService.update();
