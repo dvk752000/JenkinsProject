@@ -14,7 +14,7 @@ public class LocationService {
 	   @Autowired  
 	   LocationRepository locationRepository;
 	   	
-	   @Value(value = "${dataToBeUpdated}")
+	   @Value(value = "${dataToBeUpdatedValue}")
 	   private String dataToBeUpdated;
 	   
 
