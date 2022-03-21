@@ -65,7 +65,7 @@ pipeline {
                         sh "docker rm ${doc_containers}"
                     }
                     
-                    def doc_volumes = sh(returnStdout: true, script: "docker volume ls --filter name=${imageVolume} --format '{{.Names}}'").replaceAll("\n", " ")
+                    def doc_volumes = sh(returnStdout: true, script: "docker volume ls --filter name=${imageVolume} --format '{{.Name}}'").replaceAll("\n", " ")
                     if (doc_volumes) {
                     	sh "docker volume rm ${imageVolume}"
                     }
