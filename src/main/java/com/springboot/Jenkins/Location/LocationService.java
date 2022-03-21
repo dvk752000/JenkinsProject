@@ -18,8 +18,11 @@ public class LocationService {
 	   @Autowired  
 	   LocationRepository locationRepository;  
 	   	
-	   //@Value("${message}")
-	   //private String jdbcUrl1;
+	   @Value("${dbDataValue}")
+	   private String dbDataVal;
+	   
+	   @Value("${spring.datasource.url}")
+	   private String hsqlURL;
 	   
 	   
 	   //getting all student records  
@@ -55,7 +58,8 @@ public class LocationService {
 			
 			Location locationFromDb = locationRepository.findById(id).get();
 			locationFromDb.setName(name);
-			//System.out.println("setDbData has a value: " + jdbcUrl1);
+			System.out.println("dbDataVal has a value: " + dbDataVal);
+			System.out.println("hsqlURL has a value: " + hsqlURL);
 			//System.out.println("getProperty returned a value: " + System.getProperty("${hsqlSource}"));;
 
 		    return locationRepository.save(locationFromDb);
