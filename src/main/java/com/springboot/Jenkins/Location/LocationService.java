@@ -19,9 +19,9 @@ public class LocationService {
 	   LocationRepository locationRepository;  
 	   	
 	   @Value(value = "${dataToBeUpdated}")
-	   private String dataToBeUpdated;
+	   private String dataToBeUpdatedRecieved;
 	   
-	   private String[] dataToBeUpdatedArray = dataToBeUpdated.split("\\s+");
+	   private String[] dataToBeUpdatedArray = dataToBeUpdatedRecieved.split("\\s+");
 
 	   
 	   
