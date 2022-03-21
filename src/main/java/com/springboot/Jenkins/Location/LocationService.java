@@ -11,17 +11,17 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 @Service
-@PropertySource(value = { "classpath:build.properties" })
+//@PropertySource(value = { "classpath:application.properties" })
 public class LocationService {
 	
 	   //database
 	   @Autowired  
 	   LocationRepository locationRepository;  
 	   	
-	   @Value("${dbDataValue:1}")
+	   @Value(value = "$dbvalue")
 	   private String dbDataVal;
 	   
-	   @Value("${spring.datasource.url}")
+	   //@Value("${spring.datasource.url}")
 	   private String hsqlURL;
 	   
 	   
