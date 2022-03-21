@@ -17,6 +17,9 @@ public class LocationService {
 	   //database
 	   @Autowired  
 	   LocationRepository locationRepository;  
+	   
+	   @Autowired
+	   Location location;
 	   	
 	   @Value(value = "${dataToBeUpdated}")
 	   private String dataToBeUpdated;
@@ -52,20 +55,30 @@ public class LocationService {
 			
 		}
 	   
-	   public Location update(String id, String name) {
+	   public Location update() {
 			
-			Location locationFromDb = locationRepository.findById(id).get();
-			locationFromDb.setName(name);
-			System.out.println("dbDataVal has a value: " + dataToBeUpdated.toString());
-			String[] newStr = dataToBeUpdated.split("\\s+");
-			for(String data:newStr) {
-				System.out.println("dbDataVal has a value: " + data);
-			}
+			//Location locationFromDb = locationRepository.findById(id).get();
+			//locationFromDb.setName(name);
+			//System.out.println("dbDataVal has a value: " + dataToBeUpdated.toString());
+			String[] dataToBeUpdatedArray = dataToBeUpdated.split("\\s+");
+			//for(String data:newStr) {
+			//	System.out.println("dbDataVal has a value: " + data);
+			//}
 			
 			//System.out.println("getProperty returned a value: " + System.getProperty("${hsqlSource}"));;
 
-		    return locationRepository.save(locationFromDb);
-			
+		    //return locationRepository.save(locationFromDb);
+		   if(dataToBeUpdatedArray.length == 2) {
+			   location.setId(dataToBeUpdatedArray[0]);
+			   location.setName(dataToBeUpdatedArray[1]);
+			   
+		   }
+		   else {
+			   location.setName("No Location Given");
+		   }
+		   
+		   return locationRepository.save(location);
+		
 		}
 	
 	
