@@ -18,7 +18,7 @@ public class LocationService {
 	   @Autowired  
 	   LocationRepository locationRepository;  
 	   	
-	   @Value(value = "${dbvalue}")
+	   @Value(value = "${dataToBeUpdated}")
 	   private String dbDataVal;
 	   
 	   @Value("${spring.datasource.url}")
