@@ -21,9 +21,7 @@ public class LocationService {
 	   @Value(value = "${dataToBeUpdated}")
 	   private String dataToBeUpdated;
 	   
-	   String[] newStr = dataToBeUpdated.split("\\s+");
 
-	   
 	   
 	   //getting all student records  
 	   public List<Location> allLocations()   
@@ -59,6 +57,7 @@ public class LocationService {
 			Location locationFromDb = locationRepository.findById(id).get();
 			locationFromDb.setName(name);
 			System.out.println("dbDataVal has a value: " + dataToBeUpdated.toString());
+			String[] newStr = dataToBeUpdated.split("\\s+");
 			System.out.println("dbDataVal has a value: " + newStr.toString());
 			//System.out.println("getProperty returned a value: " + System.getProperty("${hsqlSource}"));;
 
