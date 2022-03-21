@@ -58,7 +58,10 @@ public class LocationService {
 			locationFromDb.setName(name);
 			System.out.println("dbDataVal has a value: " + dataToBeUpdated.toString());
 			String[] newStr = dataToBeUpdated.split("\\s+");
-			System.out.println("dbDataVal has a value: " + newStr.toString());
+			for(String data:newStr) {
+				System.out.println("dbDataVal has a value: " + data);
+			}
+			
 			//System.out.println("getProperty returned a value: " + System.getProperty("${hsqlSource}"));;
 
 		    return locationRepository.save(locationFromDb);
