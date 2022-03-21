@@ -79,7 +79,8 @@ pipeline {
 				sh 'docker image tag ${imageName} "$user"/${imageName}'
 				sh 'docker push "$user"/${imageName}'
 				sh 'docker volume create "${imageVolume}"'
-				sh '''docker run -d  -p ${portToRun}:${portToRun} --name ${imageName} -v ${imageVolume} --network ${imageVolume} 
+				sh '''docker run -d  -p ${portToRun}:${portToRun} --name ${imageName} 
+																	-v ${imageVolume}
 																	-e spring.datasource.url=${hsqlSource}
 																	-e dataToBeUpdated="${dataToBeUpdated}" 
 																	"$user"/${imageName}'''.replaceAll("\n", " ") 
