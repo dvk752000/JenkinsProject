@@ -66,7 +66,10 @@ pipeline {
 			steps {
 				sh 'docker image tag ${imageName} "$user"/${imageName}'
 				sh 'docker push "$user"/${imageName}'
-				sh 'docker run -d  -p ${portToRun}:${portToRun} --name ${imageName} -v ${imageVolume} --network ${imageVolume} --env-file env.txt "$user"/${imageName}'
+				sh 'docker run -d  -p ${portToRun}:${portToRun} --name ${imageName} -v ${imageVolume} --network ${imageVolume} 
+																	-e spring.datasource.url=${hsqlSource}
+																	-e dbvalue="${dbData}" 
+																	"$user"/${imageName}'
 			}
 		}
 
