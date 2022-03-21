@@ -69,19 +69,8 @@ pipeline {
 
 			steps {
 				sh 'docker image tag ${imageName} ${imageName}'
-				sh 'docker run -d  -p ${portToRun}:${portToRun} --name ${imageName} -v ${imageVolume} --network ${imageVolume} -e spring.datasource.url=${hsqlSource} ${imageName}'
-			}
-		}
-		
-		stage('Check to update a row'){
-			steps{
-				script{
-					
-					if ("{$dataDb}" != "Default") {                                          
-				        httpRequest "http://localhost:8081/locationsUpdate/1/$dataDb"
-				    } 
-					
-				}
+				sh 'docker push vadudduk/${imageName}'
+				sh 'docker run -d  -p ${portToRun}:${portToRun} --name ${imageName} -v ${imageVolume} --network ${imageVolume} -e spring.datasource.url=${hsqlSource} vadudduk/${imageName}'
 			}
 		}
 
