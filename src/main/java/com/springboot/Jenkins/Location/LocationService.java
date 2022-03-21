@@ -21,7 +21,7 @@ public class LocationService {
 	   @Value(value = "${dbvalue}")
 	   private String dbDataVal;
 	   
-	   //@Value("${spring.datasource.url}")
+	   @Value("${spring.datasource.url}")
 	   private String hsqlURL;
 	   
 	   
